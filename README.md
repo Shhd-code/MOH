@@ -664,29 +664,29 @@ ctrlScroll.AutomaticCanvasSize = Enum.AutomaticSize.Y
 ctrlScroll.CanvasSize = UDim2.new(0, 0, 0, 0)
 
 local cuteBtn      = makeBigBtn(ctrlScroll, "نسخ", 4,
-    Color3.fromRGB(255, 215, 0), Color3.fromRGB(180, 140, 0))
+    Color3.fromRGB(255, 215, 0), Color3.fromRGB(200, 140, 0))
 local spamBtn      = makeBigBtn(ctrlScroll, "سبام", 58,
-    Color3.fromRGB(255, 80, 80), Color3.fromRGB(170, 30, 30))
+    Color3.fromRGB(255, 60, 60), Color3.fromRGB(180, 20, 20))
 local skinsBtn     = makeBigBtn(ctrlScroll, "سكنات", 112,
-    Color3.fromRGB(255, 90, 200), Color3.fromRGB(170, 30, 130))
+    Color3.fromRGB(220, 50, 255), Color3.fromRGB(140, 10, 180))
 local dancesBtn    = makeBigBtn(ctrlScroll, "رقصات", 166,
-    Color3.fromRGB(230, 140, 30), Color3.fromRGB(160, 90, 10))
-local loadBtn      = makeBigBtn(ctrlScroll, "تحكم الراديو", 220,
-    Color3.fromRGB(210, 168, 0), Color3.fromRGB(140, 105, 0))
+    Color3.fromRGB(255, 120, 20), Color3.fromRGB(200, 70, 0))
+local loadBtn      = makeBigBtn(ctrlScroll, "راديو", 220,
+    Color3.fromRGB(0, 210, 200), Color3.fromRGB(0, 130, 120))
 local hideBtn      = makeBigBtn(ctrlScroll, "إخفاء رسائل السبام", 274,
-    Color3.fromRGB(30, 200, 200), Color3.fromRGB(15, 130, 130))
+    Color3.fromRGB(30, 130, 255), Color3.fromRGB(10, 60, 180))
 local spinStartBtn = makeBigBtn(ctrlScroll, "تشغيل الدوران", 328,
-    Color3.fromRGB(140, 220, 40), Color3.fromRGB(80, 150, 20))
+    Color3.fromRGB(80, 220, 50), Color3.fromRGB(30, 140, 10))
 local spinStopBtn  = makeBigBtn(ctrlScroll, "إيقاف الدوران", 382,
-    Color3.fromRGB(170, 30, 30), Color3.fromRGB(110, 15, 15))
+    Color3.fromRGB(220, 30, 60), Color3.fromRGB(140, 10, 30))
 local logsBtn      = makeBigBtn(ctrlScroll, "حماية من logs / clogs", 436,
-    Color3.fromRGB(220, 170, 0), Color3.fromRGB(0, 70, 140))
-local titleBtn     = makeBigBtn(ctrlScroll, "تحكم في اللقب", 490,
-    Color3.fromRGB(170, 70, 220), Color3.fromRGB(100, 30, 150))
+    Color3.fromRGB(150, 50, 255), Color3.fromRGB(80, 10, 170))
+local titleBtn     = makeBigBtn(ctrlScroll, "تايتل", 490,
+    Color3.fromRGB(255, 50, 150), Color3.fromRGB(180, 10, 90))
 local allBtn       = makeBigBtn(ctrlScroll, "نسخ all", 544,
-    Color3.fromRGB(30, 180, 255), Color3.fromRGB(10, 100, 180))
-local blueBtn      = makeBigBtn(ctrlScroll, "نسخه معدلة من سكربت بلو", 598,
-    Color3.fromRGB(0, 120, 255), Color3.fromRGB(0, 60, 160))
+    Color3.fromRGB(0, 180, 255), Color3.fromRGB(0, 90, 180))
+local blueBtn      = makeBigBtn(ctrlScroll, "نسخه من سكربت بلو", 598,
+    Color3.fromRGB(20, 80, 255), Color3.fromRGB(10, 30, 160))
 
 local ctrlStatus = Instance.new("TextLabel", main)
 ctrlStatus.BackgroundTransparency = 1
@@ -754,13 +754,13 @@ end)
 local controlLoaded = false
 loadBtn.MouseButton1Click:Connect(function()
     showBigNotice("البس الراديو يلا يشتغل السكربت 🙌😌")
-    if controlLoaded then ctrlStatus.Text = "تحكم الراديو مفعل بالفعل" return end
+    if controlLoaded then ctrlStatus.Text = "الراديو مفعل بالفعل" return end
     ctrlStatus.Text = "جاري تشغيل الراديو..."
     task.spawn(function()
         local ok, err = pcall(function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/Shhd-code/Raduooo/refs/heads/main/README.md"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Shhd-code/Raduo_moh/refs/heads/main/README.md"))()
         end)
-        if ok then controlLoaded = true; ctrlStatus.Text = "تم تشغيل تحكم الراديو"
+        if ok then controlLoaded = true; ctrlStatus.Text = "تم تشغيل الراديو"
         else ctrlStatus.Text = "فشل التشغيل: " .. tostring(err):sub(1, 60) end
     end)
 end)
@@ -1178,13 +1178,13 @@ print("[MOH RGB] Loaded")
 ]==]
 
 titleBtn.MouseButton1Click:Connect(function()
-    if titleLoaded then ctrlStatus.Text = "تحكم اللقب مفعل بالفعل" return end
-    ctrlStatus.Text = "جاري تشغيل تحكم اللقب..."
+    if titleLoaded then ctrlStatus.Text = "تايتل مفعل بالفعل" return end
+    ctrlStatus.Text = "جاري تشغيل تايتل..."
     task.spawn(function()
         local fn, err = loadstring(MOH_RGB_SOURCE)
         if not fn then ctrlStatus.Text = "فشل: " .. tostring(err):sub(1,60); return end
         local ok, runErr = pcall(fn)
-        if ok then titleLoaded = true; ctrlStatus.Text = "تم تشغيل تحكم اللقب"
+        if ok then titleLoaded = true; ctrlStatus.Text = "تم تشغيل تايتل"
         else ctrlStatus.Text = "خطأ: " .. tostring(runErr):sub(1,60) end
     end)
 end)
@@ -1206,7 +1206,7 @@ spamBtn.MouseButton1Click:Connect(function()
     ctrlStatus.Text = "جاري تشغيل السبام..."
     task.spawn(function()
         local ok, err = pcall(function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/Shhd-code/SH_spam_neo/refs/heads/main/README.md"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Shhd-code/Spam_moh/refs/heads/main/README.md"))()
         end)
         if ok then ctrlStatus.Text = "تم تشغيل السبام"
         else ctrlStatus.Text = "فشل: " .. tostring(err):sub(1, 60) end
@@ -1217,7 +1217,7 @@ skinsBtn.MouseButton1Click:Connect(function()
     ctrlStatus.Text = "جاري تشغيل السكنات..."
     task.spawn(function()
         local ok, err = pcall(function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/Shhd-code/Skinn-neooo/refs/heads/main/README.md"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Shhd-code/Skin_moh/refs/heads/main/README.md"))()
         end)
         if ok then ctrlStatus.Text = "تم تشغيل السكنات"
         else ctrlStatus.Text = "فشل: " .. tostring(err):sub(1, 60) end
@@ -1228,7 +1228,7 @@ allBtn.MouseButton1Click:Connect(function()
     ctrlStatus.Text = "جاري تشغيل نسخ all..."
     task.spawn(function()
         local ok, err = pcall(function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/Shhd-code/All/refs/heads/main/README.md"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Shhd-code/All_moh/refs/heads/main/README.md"))()
         end)
         if ok then ctrlStatus.Text = "تم تشغيل نسخ all"
         else ctrlStatus.Text = "فشل: " .. tostring(err):sub(1, 60) end
@@ -1241,7 +1241,7 @@ blueBtn.MouseButton1Click:Connect(function()
     ctrlStatus.Text = "جاري تشغيل نسخه معدلة من سكربت بلو..."
     task.spawn(function()
         local ok, err = pcall(function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/Shhd-code/Blsh/refs/heads/main/README.md"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Shhd-code/Blu_moh/refs/heads/main/README.md"))()
         end)
         if ok then blueLoaded = true; ctrlStatus.Text = "تم تشغيل نسخه معدلة من سكربت بلو"
         else ctrlStatus.Text = "فشل: " .. tostring(err):sub(1, 60) end
