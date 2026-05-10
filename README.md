@@ -631,6 +631,28 @@ makeDraggable(miniBubble, miniBubble)
 ----------------------------------------------------------------
 -- Buttons area (no tabs)
 ----------------------------------------------------------------
+local function makeBigBtn(parent, text, posY, color1, color2)
+    color1 = color1 or Color3.fromRGB(180, 140, 0)
+    color2 = color2 or Color3.fromRGB(100, 75, 0)
+    local b = Instance.new("TextButton", parent)
+    b.Position = UDim2.new(0, 10, 0, posY); b.Size = UDim2.new(1, -20, 0, 46)
+    b.BackgroundColor3 = Color3.fromRGB(120, 90, 0); b.BackgroundTransparency = 0.15
+    b.BorderSizePixel = 0; b.AutoButtonColor = false
+    b.Font = Enum.Font.GothamBlack; b.Text = text; b.TextSize = 16
+    b.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Instance.new("UICorner", b).CornerRadius = UDim.new(0, 10)
+    local s = Instance.new("UIStroke", b); s.Color = Color3.fromRGB(255, 215, 0); s.Transparency = 0.3
+    local g = Instance.new("UIGradient", b)
+    g.Color = ColorSequence.new{
+        ColorSequenceKeypoint.new(0, color1),
+        ColorSequenceKeypoint.new(1, color2),
+    }
+    g.Rotation = 90
+    b.MouseEnter:Connect(function() TweenService:Create(b, TweenInfo.new(0.15), {BackgroundTransparency = 0}):Play() end)
+    b.MouseLeave:Connect(function() TweenService:Create(b, TweenInfo.new(0.15), {BackgroundTransparency = 0.15}):Play() end)
+    return b
+end
+
 local ctrlScroll = Instance.new("ScrollingFrame", main)
 ctrlScroll.Position = UDim2.new(0, 0, 0, 52)
 ctrlScroll.Size = UDim2.new(1, 0, 1, -80)
