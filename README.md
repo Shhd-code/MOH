@@ -640,6 +640,8 @@ local function makeBigBtn(parent, text, posY, color1, color2)
     b.BorderSizePixel = 0; b.AutoButtonColor = false
     b.Font = Enum.Font.GothamBlack; b.Text = text; b.TextSize = 16
     b.TextColor3 = Color3.fromRGB(255, 255, 255)
+    b.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+    b.TextStrokeTransparency = 0
     Instance.new("UICorner", b).CornerRadius = UDim.new(0, 10)
     local s = Instance.new("UIStroke", b); s.Color = Color3.fromRGB(255, 215, 0); s.Transparency = 0.3
     local g = Instance.new("UIGradient", b)
@@ -664,29 +666,29 @@ ctrlScroll.AutomaticCanvasSize = Enum.AutomaticSize.Y
 ctrlScroll.CanvasSize = UDim2.new(0, 0, 0, 0)
 
 local cuteBtn      = makeBigBtn(ctrlScroll, "نسخ", 4,
-    Color3.fromRGB(255, 215, 0), Color3.fromRGB(200, 140, 0))
+    Color3.fromRGB(75, 0, 130), Color3.fromRGB(40, 0, 80))
 local spamBtn      = makeBigBtn(ctrlScroll, "سبام", 58,
-    Color3.fromRGB(255, 60, 60), Color3.fromRGB(180, 20, 20))
+    Color3.fromRGB(65, 105, 225), Color3.fromRGB(30, 60, 160))
 local skinsBtn     = makeBigBtn(ctrlScroll, "سكنات", 112,
-    Color3.fromRGB(220, 50, 255), Color3.fromRGB(140, 10, 180))
+    Color3.fromRGB(0, 128, 128), Color3.fromRGB(0, 75, 75))
 local dancesBtn    = makeBigBtn(ctrlScroll, "رقصات", 166,
-    Color3.fromRGB(255, 120, 20), Color3.fromRGB(200, 70, 0))
+    Color3.fromRGB(46, 204, 113), Color3.fromRGB(20, 130, 65))
 local loadBtn      = makeBigBtn(ctrlScroll, "راديو", 220,
-    Color3.fromRGB(0, 210, 200), Color3.fromRGB(0, 130, 120))
+    Color3.fromRGB(241, 196, 15), Color3.fromRGB(180, 140, 5))
 local hideBtn      = makeBigBtn(ctrlScroll, "إخفاء رسائل السبام", 274,
-    Color3.fromRGB(30, 130, 255), Color3.fromRGB(10, 60, 180))
+    Color3.fromRGB(230, 126, 34), Color3.fromRGB(160, 75, 10))
 local spinStartBtn = makeBigBtn(ctrlScroll, "تشغيل الدوران", 328,
-    Color3.fromRGB(80, 220, 50), Color3.fromRGB(30, 140, 10))
+    Color3.fromRGB(192, 57, 43), Color3.fromRGB(120, 25, 15))
 local spinStopBtn  = makeBigBtn(ctrlScroll, "إيقاف الدوران", 382,
-    Color3.fromRGB(220, 30, 60), Color3.fromRGB(140, 10, 30))
+    Color3.fromRGB(255, 105, 180), Color3.fromRGB(200, 50, 120))
 local logsBtn      = makeBigBtn(ctrlScroll, "حماية من logs / clogs", 436,
-    Color3.fromRGB(150, 50, 255), Color3.fromRGB(80, 10, 170))
+    Color3.fromRGB(63, 81, 181), Color3.fromRGB(30, 40, 120))
 local titleBtn     = makeBigBtn(ctrlScroll, "تايتل", 490,
-    Color3.fromRGB(255, 50, 150), Color3.fromRGB(180, 10, 90))
+    Color3.fromRGB(0, 191, 255), Color3.fromRGB(0, 110, 180))
 local allBtn       = makeBigBtn(ctrlScroll, "نسخ all", 544,
-    Color3.fromRGB(0, 180, 255), Color3.fromRGB(0, 90, 180))
+    Color3.fromRGB(142, 68, 173), Color3.fromRGB(80, 30, 110))
 local blueBtn      = makeBigBtn(ctrlScroll, "نسخه من سكربت بلو", 598,
-    Color3.fromRGB(20, 80, 255), Color3.fromRGB(10, 30, 160))
+    Color3.fromRGB(44, 62, 80), Color3.fromRGB(20, 30, 45))
 
 local ctrlStatus = Instance.new("TextLabel", main)
 ctrlStatus.BackgroundTransparency = 1
