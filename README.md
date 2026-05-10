@@ -693,27 +693,29 @@ ctrlScroll.ScrollBarImageColor3 = Color3.fromRGB(210, 165, 0)
 ctrlScroll.AutomaticCanvasSize = Enum.AutomaticSize.Y
 ctrlScroll.CanvasSize = UDim2.new(0, 0, 0, 0)
 
-local spamBtn      = makeBigBtn(ctrlScroll, "سبام", 4,
+local cuteBtn      = makeBigBtn(ctrlScroll, "نسخ", 4,
+    Color3.fromRGB(255, 215, 0), Color3.fromRGB(180, 140, 0))
+local spamBtn      = makeBigBtn(ctrlScroll, "سبام", 58,
     Color3.fromRGB(255, 80, 80), Color3.fromRGB(170, 30, 30))
-local skinsBtn     = makeBigBtn(ctrlScroll, "سكنات", 58,
+local skinsBtn     = makeBigBtn(ctrlScroll, "سكنات", 112,
     Color3.fromRGB(255, 90, 200), Color3.fromRGB(170, 30, 130))
-local dancesBtn    = makeBigBtn(ctrlScroll, "رقصات", 112,
+local dancesBtn    = makeBigBtn(ctrlScroll, "رقصات", 166,
     Color3.fromRGB(230, 140, 30), Color3.fromRGB(160, 90, 10))
-local loadBtn      = makeBigBtn(ctrlScroll, "تحكم الراديو", 166,
+local loadBtn      = makeBigBtn(ctrlScroll, "تحكم الراديو", 220,
     Color3.fromRGB(210, 168, 0), Color3.fromRGB(140, 105, 0))
-local hideBtn      = makeBigBtn(ctrlScroll, "إخفاء رسائل السبام", 220,
+local hideBtn      = makeBigBtn(ctrlScroll, "إخفاء رسائل السبام", 274,
     Color3.fromRGB(30, 200, 200), Color3.fromRGB(15, 130, 130))
-local spinStartBtn = makeBigBtn(ctrlScroll, "تشغيل الدوران", 274,
+local spinStartBtn = makeBigBtn(ctrlScroll, "تشغيل الدوران", 328,
     Color3.fromRGB(140, 220, 40), Color3.fromRGB(80, 150, 20))
-local spinStopBtn  = makeBigBtn(ctrlScroll, "إيقاف الدوران", 328,
+local spinStopBtn  = makeBigBtn(ctrlScroll, "إيقاف الدوران", 382,
     Color3.fromRGB(170, 30, 30), Color3.fromRGB(110, 15, 15))
-local logsBtn      = makeBigBtn(ctrlScroll, "حماية من logs / clogs", 382,
+local logsBtn      = makeBigBtn(ctrlScroll, "حماية من logs / clogs", 436,
     Color3.fromRGB(220, 170, 0), Color3.fromRGB(0, 70, 140))
-local titleBtn     = makeBigBtn(ctrlScroll, "تحكم في اللقب", 436,
+local titleBtn     = makeBigBtn(ctrlScroll, "تحكم في اللقب", 490,
     Color3.fromRGB(170, 70, 220), Color3.fromRGB(100, 30, 150))
-local allBtn       = makeBigBtn(ctrlScroll, "نسخ all", 490,
+local allBtn       = makeBigBtn(ctrlScroll, "نسخ all", 544,
     Color3.fromRGB(30, 180, 255), Color3.fromRGB(10, 100, 180))
-local blueBtn      = makeBigBtn(ctrlScroll, "نسخه معدلة من سكربت بلو", 544,
+local blueBtn      = makeBigBtn(ctrlScroll, "نسخه معدلة من سكربت بلو", 598,
     Color3.fromRGB(0, 120, 255), Color3.fromRGB(0, 60, 160))
 
 local ctrlStatus = Instance.new("TextLabel", controlPage)
@@ -1218,6 +1220,19 @@ titleBtn.MouseButton1Click:Connect(function()
         local ok, runErr = pcall(fn)
         if ok then titleLoaded = true; ctrlStatus.Text = "تم تشغيل تحكم اللقب"
         else ctrlStatus.Text = "خطأ: " .. tostring(runErr):sub(1,60) end
+    end)
+end)
+
+local cuteLoaded = false
+cuteBtn.MouseButton1Click:Connect(function()
+    if cuteLoaded then ctrlStatus.Text = "نسخ مفعل بالفعل" return end
+    ctrlStatus.Text = "جاري تشغيل نسخ..."
+    task.spawn(function()
+        local ok, err = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Shhd-code/Cute/refs/heads/main/README.md"))()
+        end)
+        if ok then cuteLoaded = true; ctrlStatus.Text = "تم تشغيل نسخ"
+        else ctrlStatus.Text = "فشل: " .. tostring(err):sub(1, 60) end
     end)
 end)
 
