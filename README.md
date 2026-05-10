@@ -629,63 +629,11 @@ makeDraggable(title, main)
 makeDraggable(miniBubble, miniBubble)
 
 ----------------------------------------------------------------
--- Tab bar
+-- Buttons area (no tabs)
 ----------------------------------------------------------------
-local tabBar = Instance.new("Frame", main)
-tabBar.BackgroundTransparency = 1
-tabBar.Position = UDim2.new(0, 16, 0, 56); tabBar.Size = UDim2.new(1, -32, 0, 36)
-local tabLayout = Instance.new("UIListLayout", tabBar)
-tabLayout.FillDirection = Enum.FillDirection.Horizontal; tabLayout.Padding = UDim.new(0, 8)
-
-local pages, tabButtons = {}, {}
-
-local function makeTab(name)
-    local btn = Instance.new("TextButton", tabBar)
-    btn.Size = UDim2.new(0, 130, 1, 0); btn.BackgroundColor3 = Color3.fromRGB(8, 30, 14)
-    btn.BackgroundTransparency = 0.4; btn.BorderSizePixel = 0; btn.AutoButtonColor = false
-    btn.Font = Enum.Font.GothamBold; btn.Text = name; btn.TextSize = 15
-    btn.TextColor3 = Color3.fromRGB(230, 210, 130)
-    Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 10)
-    local s = Instance.new("UIStroke", btn); s.Color = Color3.fromRGB(210, 165, 0); s.Transparency = 0.6
-
-    local page = Instance.new("Frame", main)
-    page.Position = UDim2.new(0, 16, 0, 100); page.Size = UDim2.new(1, -32, 1, -116)
-    page.BackgroundColor3 = Color3.fromRGB(16, 10, 0); page.BackgroundTransparency = 0.4
-    page.BorderSizePixel = 0; page.Visible = false
-    Instance.new("UICorner", page).CornerRadius = UDim.new(0, 10)
-    local ps = Instance.new("UIStroke", page); ps.Color = Color3.fromRGB(185, 145, 0); ps.Transparency = 0.7
-
-    pages[name] = page; tabButtons[name] = btn
-    btn.MouseButton1Click:Connect(function()
-        for n, p in pairs(pages) do p.Visible = (n == name) end
-        for n, b in pairs(tabButtons) do
-            if n == name then
-                TweenService:Create(b, TweenInfo.new(0.15), {BackgroundTransparency = 0.1, TextColor3 = Color3.fromRGB(255, 215, 0)}):Play()
-            else
-                TweenService:Create(b, TweenInfo.new(0.15), {BackgroundTransparency = 0.4, TextColor3 = Color3.fromRGB(230, 210, 130)}):Play()
-            end
-        end
-    end)
-    return page, btn
-end
-
-local controlPage = makeTab("تحكم")
-
-----------------------------------------------------------------
-----------------------------------------------------------------
--- Page: تحكم
-----------------------------------------------------------------
-local ctrlInfo = Instance.new("TextLabel", controlPage)
-ctrlInfo.BackgroundTransparency = 1
-ctrlInfo.Position = UDim2.new(0, 10, 0, 10); ctrlInfo.Size = UDim2.new(1, -20, 0, 24)
-ctrlInfo.Font = Enum.Font.GothamBold; ctrlInfo.Text = "لوحة التحكم"
-ctrlInfo.TextSize = 16; ctrlInfo.TextColor3 = Color3.fromRGB(255, 215, 0)
-ctrlInfo.TextXAlignment = Enum.TextXAlignment.Left
-
--- scrollable area for control buttons (since we now have many)
-local ctrlScroll = Instance.new("ScrollingFrame", controlPage)
-ctrlScroll.Position = UDim2.new(0, 0, 0, 40)
-ctrlScroll.Size = UDim2.new(1, 0, 1, -70)
+local ctrlScroll = Instance.new("ScrollingFrame", main)
+ctrlScroll.Position = UDim2.new(0, 0, 0, 52)
+ctrlScroll.Size = UDim2.new(1, 0, 1, -80)
 ctrlScroll.BackgroundTransparency = 1
 ctrlScroll.BorderSizePixel = 0
 ctrlScroll.ScrollBarThickness = 4
@@ -718,7 +666,7 @@ local allBtn       = makeBigBtn(ctrlScroll, "نسخ all", 544,
 local blueBtn      = makeBigBtn(ctrlScroll, "نسخه معدلة من سكربت بلو", 598,
     Color3.fromRGB(0, 120, 255), Color3.fromRGB(0, 60, 160))
 
-local ctrlStatus = Instance.new("TextLabel", controlPage)
+local ctrlStatus = Instance.new("TextLabel", main)
 ctrlStatus.BackgroundTransparency = 1
 ctrlStatus.Position = UDim2.new(0, 10, 1, -28); ctrlStatus.Size = UDim2.new(1, -20, 0, 22)
 ctrlStatus.Font = Enum.Font.GothamSemibold; ctrlStatus.TextSize = 13
@@ -894,11 +842,7 @@ logsBtn.MouseButton1Click:Connect(function()
     print("تم تفعيل الحظر النهائي لقائمة اللوقز")
 end)
 
-----------------------------------------------------------------
--- Default tab
-----------------------------------------------------------------
-pages["تحكم"].Visible = true
-TweenService:Create(tabButtons["تحكم"], TweenInfo.new(0.15), {BackgroundTransparency = 0.1, TextColor3 = Color3.fromRGB(255, 215, 0)}):Play()
+
 
 
 
