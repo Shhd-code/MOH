@@ -1,6 +1,6 @@
 --[[
-    SH Hub - Roblox UI Script
-    Tabs: تحكم (Control) only - نسخ removed
+    MOH Hub - Roblox UI Script
+    Tab: تحكم (Control)
 ]]
 
 local Players = game:GetService("Players")
@@ -24,7 +24,7 @@ local guiParent = getGuiParent()
 
 -- cleanup old
 pcall(function()
-    for _, n in ipairs({"SHHub","SHMini","SHSplash"}) do
+    for _, n in ipairs({"MOHHub","MOHMini","MOHSplash"}) do
         local old = guiParent:FindFirstChild(n)
         if old then old:Destroy() end
         local old2 = PlayerGui:FindFirstChild(n)
@@ -32,8 +32,9 @@ pcall(function()
     end
 end)
 
--- إشعار فريق SH Hub – يظهر بعد دقيقتين من تشغيل السكربت
-
+----------------------------------------------------------------
+-- إشعار فريق MOH Hub – يظهر بعد دقيقتين من تشغيل السكربت
+----------------------------------------------------------------
 local function getAvatar(username)
     local ok1, uid = pcall(function()
         return Players:GetUserIdFromNameAsync(username)
@@ -48,7 +49,7 @@ end
 local function showTeamCard()
     pcall(function()
         local sg = Instance.new("ScreenGui")
-        sg.Name = "SH_TeamCard"
+        sg.Name = "MOH_TeamCard"
         sg.DisplayOrder = 9999997
         sg.IgnoreGuiInset = true
         sg.ResetOnSpawn = false
@@ -67,13 +68,13 @@ local function showTeamCard()
         card.Size = UDim2.new(0, 340, 0, 0)
         card.AnchorPoint = Vector2.new(0.5, 0.5)
         card.Position = UDim2.new(0.5, 0, 0.65, 0)
-        card.BackgroundColor3 = Color3.fromRGB(5, 10, 20)
+        card.BackgroundColor3 = Color3.fromRGB(20, 14, 0)
         card.BackgroundTransparency = 0.05
         card.BorderSizePixel = 0
         card.AutomaticSize = Enum.AutomaticSize.Y
         Instance.new("UICorner", card).CornerRadius = UDim.new(0, 18)
         local stroke = Instance.new("UIStroke", card)
-        stroke.Color = Color3.fromRGB(0, 200, 255)
+        stroke.Color = Color3.fromRGB(255, 200, 0)
         stroke.Thickness = 1.8
         stroke.Transparency = 0.2
 
@@ -93,16 +94,16 @@ local function showTeamCard()
         title.Size = UDim2.new(1, 0, 0, 26)
         title.BackgroundTransparency = 1
         title.Font = Enum.Font.GothamBold
-        title.Text = "✦ فريق SH Hub ✦"
+        title.Text = "✦ فريق MOH Hub ✦"
         title.TextSize = 17
-        title.TextColor3 = Color3.fromRGB(0, 210, 255)
+        title.TextColor3 = Color3.fromRGB(255, 210, 100)
         title.TextXAlignment = Enum.TextXAlignment.Center
         title.LayoutOrder = 1
 
         -- فاصل
         local div = Instance.new("Frame", card)
         div.Size = UDim2.new(1, 0, 0, 1)
-        div.BackgroundColor3 = Color3.fromRGB(0, 180, 255)
+        div.BackgroundColor3 = Color3.fromRGB(255, 180, 0)
         div.BackgroundTransparency = 0.5
         div.BorderSizePixel = 0
         div.LayoutOrder = 2
@@ -128,7 +129,7 @@ local function showTeamCard()
             img.Image = avatarUrl
             Instance.new("UICorner", img).CornerRadius = UDim.new(0, 36)
             local imgStroke = Instance.new("UIStroke", img)
-            imgStroke.Color = Color3.fromRGB(0, 200, 255)
+            imgStroke.Color = Color3.fromRGB(255, 200, 0)
             imgStroke.Thickness = 2
             imgStroke.Transparency = 0.1
 
@@ -140,7 +141,7 @@ local function showTeamCard()
             nameLbl.Font = Enum.Font.GothamBold
             nameLbl.Text = "@" .. username
             nameLbl.TextSize = 14
-            nameLbl.TextColor3 = Color3.fromRGB(220, 240, 255)
+            nameLbl.TextColor3 = Color3.fromRGB(255, 240, 200)
             nameLbl.TextXAlignment = Enum.TextXAlignment.Right
 
             -- الدور
@@ -151,7 +152,7 @@ local function showTeamCard()
             roleLbl.Font = Enum.Font.GothamSemibold
             roleLbl.Text = roleText
             roleLbl.TextSize = 13
-            roleLbl.TextColor3 = Color3.fromRGB(0, 210, 255)
+            roleLbl.TextColor3 = Color3.fromRGB(255, 210, 100)
             roleLbl.TextXAlignment = Enum.TextXAlignment.Right
         end
 
@@ -161,7 +162,7 @@ local function showTeamCard()
         -- زر إغلاق
         local closeBtn = Instance.new("TextButton", card)
         closeBtn.Size = UDim2.new(1, 0, 0, 34)
-        closeBtn.BackgroundColor3 = Color3.fromRGB(0, 140, 200)
+        closeBtn.BackgroundColor3 = Color3.fromRGB(210, 165, 0)
         closeBtn.BackgroundTransparency = 0.1
         closeBtn.BorderSizePixel = 0
         closeBtn.AutoButtonColor = false
@@ -172,10 +173,10 @@ local function showTeamCard()
         closeBtn.LayoutOrder = 4
         Instance.new("UICorner", closeBtn).CornerRadius = UDim.new(0, 10)
         closeBtn.MouseEnter:Connect(function()
-            TweenService:Create(closeBtn, TweenInfo.new(0.12), {BackgroundColor3 = Color3.fromRGB(0, 180, 255)}):Play()
+            TweenService:Create(closeBtn, TweenInfo.new(0.12), {BackgroundColor3 = Color3.fromRGB(255, 180, 0)}):Play()
         end)
         closeBtn.MouseLeave:Connect(function()
-            TweenService:Create(closeBtn, TweenInfo.new(0.12), {BackgroundColor3 = Color3.fromRGB(0, 140, 200)}):Play()
+            TweenService:Create(closeBtn, TweenInfo.new(0.12), {BackgroundColor3 = Color3.fromRGB(210, 165, 0)}):Play()
         end)
 
         -- أنيميشن الظهور
@@ -200,13 +201,15 @@ task.delay(120, function()
     showTeamCard()
 end)
 
--- Loading splash: SH Zero Protocol (hacker intro)
+----------------------------------------------------------------
+-- Loading splash: MOH Zero Protocol (hacker intro)
+----------------------------------------------------------------
 
 -- ─── نافذة "ما الجديد" تظهر بعد الإنترو ─────────────────────
 local function showWhatsNew()
     local core = game:GetService("CoreGui")
     local wsg = Instance.new("ScreenGui")
-    wsg.Name = "SH_WhatsNew"
+    wsg.Name = "MOH_WhatsNew"
     wsg.DisplayOrder = 9999998
     wsg.IgnoreGuiInset = true
     wsg.ResetOnSpawn = false
@@ -224,13 +227,13 @@ local function showWhatsNew()
     card.Size = UDim2.new(0, 400, 0, 0)
     card.AnchorPoint = Vector2.new(0.5, 0.5)
     card.Position = UDim2.new(0.5, 0, 0.5, 0)
-    card.BackgroundColor3 = Color3.fromRGB(6, 18, 10)
+    card.BackgroundColor3 = Color3.fromRGB(20, 13, 0)
     card.BackgroundTransparency = 0.08
     card.BorderSizePixel = 0
     card.AutomaticSize = Enum.AutomaticSize.Y
     Instance.new("UICorner", card).CornerRadius = UDim.new(0, 16)
     local cs = Instance.new("UIStroke", card)
-    cs.Color = Color3.fromRGB(0, 230, 110); cs.Thickness = 1.8; cs.Transparency = 0.15
+    cs.Color = Color3.fromRGB(230, 190, 0); cs.Thickness = 1.8; cs.Transparency = 0.15
 
     local cpad = Instance.new("UIPadding", card)
     cpad.PaddingTop = UDim.new(0, 16); cpad.PaddingBottom = UDim.new(0, 18)
@@ -255,19 +258,25 @@ local function showWhatsNew()
     titleLbl.Font = Enum.Font.GothamBold
     titleLbl.Text = "✦ ما الجديد؟ ✦"
     titleLbl.TextSize = 20
-    titleLbl.TextColor3 = Color3.fromRGB(0, 255, 130)
+    titleLbl.TextColor3 = Color3.fromRGB(255, 215, 0)
     titleLbl.AutomaticSize = Enum.AutomaticSize.XY
 
     -- فاصل
     local divider = Instance.new("Frame", card)
     divider.Size = UDim2.new(1, 0, 0, 1)
-    divider.BackgroundColor3 = Color3.fromRGB(0, 200, 100)
+    divider.BackgroundColor3 = Color3.fromRGB(210, 165, 0)
     divider.BackgroundTransparency = 0.6
     divider.BorderSizePixel = 0
     divider.LayoutOrder = 2
 
     -- النص الرئيسي
     local bodyLines = {
+        "تمت اضافه نسخه من سكربت بلو",
+        "لتسهيل النسخ عليكم",
+        "موجود في خانة التحكم",
+        "",
+        "......",
+        "",
         "القادم أفضل أن شاء الله 😌🤞",
         "",
         "shhode320~",
@@ -280,7 +289,7 @@ local function showWhatsNew()
     bodyLbl.Font = Enum.Font.GothamSemibold
     bodyLbl.Text = table.concat(bodyLines, "\n")
     bodyLbl.TextSize = 14
-    bodyLbl.TextColor3 = Color3.fromRGB(200, 245, 215)
+    bodyLbl.TextColor3 = Color3.fromRGB(255, 238, 168)
     bodyLbl.TextXAlignment = Enum.TextXAlignment.Right
     bodyLbl.TextWrapped = true
     bodyLbl.RichText = false
@@ -289,7 +298,7 @@ local function showWhatsNew()
     -- زر إغلاق
     local closeBtn = Instance.new("TextButton", card)
     closeBtn.Size = UDim2.new(1, 0, 0, 36)
-    closeBtn.BackgroundColor3 = Color3.fromRGB(0, 160, 70)
+    closeBtn.BackgroundColor3 = Color3.fromRGB(170, 130, 0)
     closeBtn.BackgroundTransparency = 0.1
     closeBtn.BorderSizePixel = 0
     closeBtn.AutoButtonColor = false
@@ -300,10 +309,10 @@ local function showWhatsNew()
     closeBtn.LayoutOrder = 4
     Instance.new("UICorner", closeBtn).CornerRadius = UDim.new(0, 10)
     closeBtn.MouseEnter:Connect(function()
-        TweenService:Create(closeBtn, TweenInfo.new(0.12), {BackgroundColor3 = Color3.fromRGB(0, 210, 90)}):Play()
+        TweenService:Create(closeBtn, TweenInfo.new(0.12), {BackgroundColor3 = Color3.fromRGB(210, 170, 0)}):Play()
     end)
     closeBtn.MouseLeave:Connect(function()
-        TweenService:Create(closeBtn, TweenInfo.new(0.12), {BackgroundColor3 = Color3.fromRGB(0, 160, 70)}):Play()
+        TweenService:Create(closeBtn, TweenInfo.new(0.12), {BackgroundColor3 = Color3.fromRGB(170, 130, 0)}):Play()
     end)
 
     -- أنيميشن الظهور (AnchorPoint 0.5,0.5 → نبدأ من أسفل قليلاً)
@@ -328,10 +337,10 @@ local function runSplash()
     local core    = game:GetService("CoreGui")
     local UIS     = game:GetService("UserInputService")
 
-    if core:FindFirstChild("SH_ZeroProtocol") then core.SH_ZeroProtocol:Destroy() end
+    if core:FindFirstChild("MOH_ZeroProtocol") then core.MOH_ZeroProtocol:Destroy() end
 
     local sg = Instance.new("ScreenGui")
-    sg.Name = "SH_ZeroProtocol"
+    sg.Name = "MOH_ZeroProtocol"
     sg.DisplayOrder = 9999999
     sg.IgnoreGuiInset = true
     sg.Parent = core
@@ -391,7 +400,7 @@ local function runSplash()
             task.delay(0.2, function() pcall(function() line:Destroy() end) end)
             if i % 5 == 0 then
                 local warn = Instance.new("TextLabel", sg)
-                warn.Text = "DECRYPTING_SH_FILES..."
+                warn.Text = "DECRYPTING_MOH_FILES..."
                 warn.TextColor3 = Color3.new(0, 1, 0)
                 warn.Font = Enum.Font.Code
                 warn.TextSize = 20
@@ -405,7 +414,7 @@ local function runSplash()
         -- المرحلة 2: هوية رقمية
         if skipped then return end
         local sh_id = Instance.new("TextLabel", sg)
-        sh_id.Text = "ID: SH_REDACTED"
+        sh_id.Text = "ID: MOH_REDACTED"
         sh_id.TextColor3 = Color3.new(1, 1, 1)
         sh_id.Font = Enum.Font.SpecialElite
         sh_id.TextSize = 80
@@ -420,16 +429,16 @@ local function runSplash()
         end
         if skipped then return end
         sh_id.Rotation = 0
-        sh_id.Text = "S H"
+        sh_id.Text = "M O H"
         sh_id.TextSize = 150
-        sh_id.TextColor3 = Color3.fromRGB(0, 255, 150)
+        sh_id.TextColor3 = Color3.fromRGB(255, 220, 0)
 
         -- المرحلة 3: الإنهاء
         if skipped then return end
         local status = Instance.new("TextLabel", sg)
         status.Text = "ROOT_ACCESS_GRANTED"
         status.TextColor3 = Color3.new(1, 1, 1)
-        status.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+        status.BackgroundColor3 = Color3.fromRGB(150, 115, 0)
         status.Font = Enum.Font.Code
         status.TextSize = 25
         status.Size = UDim2.new(0, 300, 0, 40)
@@ -451,10 +460,11 @@ local function runSplash()
 end
 pcall(runSplash)
 
+----------------------------------------------------------------
 -- Main GUI
-
+----------------------------------------------------------------
 local gui = Instance.new("ScreenGui")
-gui.Name = "SHHub"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true
+gui.Name = "MOHHub"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true
 gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling; gui.DisplayOrder = 9000
 pcall(function() gui.Parent = guiParent end)
 if not gui.Parent then gui.Parent = PlayerGui end
@@ -462,20 +472,20 @@ if not gui.Parent then gui.Parent = PlayerGui end
 local main = Instance.new("Frame", gui)
 main.Name = "Main"; main.AnchorPoint = Vector2.new(0.5, 0.5)
 main.Position = UDim2.new(0.5, 0, 0.5, 0); main.Size = UDim2.new(0, 520, 0, 360)
-main.BackgroundColor3 = Color3.fromRGB(6, 16, 9); main.BackgroundTransparency = 0.25
+main.BackgroundColor3 = Color3.fromRGB(18, 12, 0); main.BackgroundTransparency = 0.25
 main.BorderSizePixel = 0
 Instance.new("UICorner", main).CornerRadius = UDim.new(0, 14)
 local mStroke = Instance.new("UIStroke", main)
-mStroke.Color = Color3.fromRGB(0, 230, 110); mStroke.Thickness = 1.4; mStroke.Transparency = 0.25
+mStroke.Color = Color3.fromRGB(230, 190, 0); mStroke.Thickness = 1.4; mStroke.Transparency = 0.25
 local mGradient = Instance.new("UIGradient", main)
 mGradient.Color = ColorSequence.new{
-    ColorSequenceKeypoint.new(0, Color3.fromRGB(10, 30, 16)),
-    ColorSequenceKeypoint.new(1, Color3.fromRGB(4, 12, 7)),
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(32, 20, 0)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(16, 10, 0)),
 }
 mGradient.Rotation = 135
 
 local glow = Instance.new("Frame", main)
-glow.BackgroundColor3 = Color3.fromRGB(0, 255, 130); glow.BorderSizePixel = 0
+glow.BackgroundColor3 = Color3.fromRGB(255, 215, 0); glow.BorderSizePixel = 0
 glow.Size = UDim2.new(1, 0, 0, 2); glow.Position = UDim2.new(0, 0, 0, 44)
 local glowGrad = Instance.new("UIGradient", glow)
 glowGrad.Transparency = NumberSequence.new{
@@ -494,24 +504,25 @@ end)
 local title = Instance.new("TextLabel", main)
 title.BackgroundTransparency = 1
 title.Size = UDim2.new(1, -90, 0, 44); title.Position = UDim2.new(0, 16, 0, 0)
-title.Font = Enum.Font.GothamBlack; title.Text = "⬛ SH ⬛"
-title.TextSize = 22; title.TextColor3 = Color3.fromRGB(0, 255, 130)
+title.Font = Enum.Font.GothamBlack; title.Text = "⬛ MOH ⬛"
+title.TextSize = 22; title.TextColor3 = Color3.fromRGB(255, 215, 0)
 title.TextXAlignment = Enum.TextXAlignment.Left
 
+----------------------------------------------------------------
 -- Top buttons (close X + minimize circle)
-
+----------------------------------------------------------------
 local closeBtn = Instance.new("TextButton", main)
 closeBtn.AnchorPoint = Vector2.new(1, 0)
 closeBtn.Position = UDim2.new(1, -8, 0, 8)
 closeBtn.Size = UDim2.new(0, 28, 0, 28)
-closeBtn.BackgroundColor3 = Color3.fromRGB(0, 60, 30)
+closeBtn.BackgroundColor3 = Color3.fromRGB(70, 50, 0)
 closeBtn.BackgroundTransparency = 0.3; closeBtn.BorderSizePixel = 0
 closeBtn.Text = "X"; closeBtn.Font = Enum.Font.GothamBold
-closeBtn.TextColor3 = Color3.fromRGB(180, 255, 200); closeBtn.TextSize = 16
+closeBtn.TextColor3 = Color3.fromRGB(255, 240, 160); closeBtn.TextSize = 16
 closeBtn.AutoButtonColor = false
 Instance.new("UICorner", closeBtn).CornerRadius = UDim.new(0, 8)
 local closeStroke = Instance.new("UIStroke", closeBtn)
-closeStroke.Color = Color3.fromRGB(0, 200, 100); closeStroke.Transparency = 0.4
+closeStroke.Color = Color3.fromRGB(210, 165, 0); closeStroke.Transparency = 0.4
 closeBtn.MouseEnter:Connect(function() TweenService:Create(closeBtn, TweenInfo.new(0.15), {BackgroundTransparency = 0.1}):Play() end)
 closeBtn.MouseLeave:Connect(function() TweenService:Create(closeBtn, TweenInfo.new(0.15), {BackgroundTransparency = 0.3}):Play() end)
 
@@ -520,45 +531,20 @@ local minBtn = Instance.new("TextButton", main)
 minBtn.AnchorPoint = Vector2.new(1, 0)
 minBtn.Position = UDim2.new(1, -44, 0, 8)
 minBtn.Size = UDim2.new(0, 28, 0, 28)
-minBtn.BackgroundColor3 = Color3.fromRGB(0, 90, 45)
+minBtn.BackgroundColor3 = Color3.fromRGB(100, 75, 0)
 minBtn.BackgroundTransparency = 0.2; minBtn.BorderSizePixel = 0
 minBtn.Text = ""; minBtn.AutoButtonColor = false
 Instance.new("UICorner", minBtn).CornerRadius = UDim.new(1, 0) -- full circle
 local minStroke = Instance.new("UIStroke", minBtn)
-minStroke.Color = Color3.fromRGB(0, 255, 130); minStroke.Transparency = 0.2; minStroke.Thickness = 1.4
+minStroke.Color = Color3.fromRGB(255, 215, 0); minStroke.Transparency = 0.2; minStroke.Thickness = 1.4
 minBtn.MouseEnter:Connect(function() TweenService:Create(minBtn, TweenInfo.new(0.15), {BackgroundTransparency = 0}):Play() end)
 minBtn.MouseLeave:Connect(function() TweenService:Create(minBtn, TweenInfo.new(0.15), {BackgroundTransparency = 0.2}):Play() end)
 
--- نسخ button (new - in the header)
-local copyNewBtn = Instance.new("TextButton", main)
-copyNewBtn.AnchorPoint = Vector2.new(1, 0)
-copyNewBtn.Position = UDim2.new(1, -80, 0, 8)
-copyNewBtn.Size = UDim2.new(0, 28, 0, 28)
-copyNewBtn.BackgroundColor3 = Color3.fromRGB(0, 120, 255)
-copyNewBtn.BackgroundTransparency = 0.2; copyNewBtn.BorderSizePixel = 0
-copyNewBtn.Text = "📋"; copyNewBtn.Font = Enum.Font.GothamBold
-copyNewBtn.TextColor3 = Color3.fromRGB(255, 255, 255); copyNewBtn.TextSize = 14
-copyNewBtn.AutoButtonColor = false
-Instance.new("UICorner", copyNewBtn).CornerRadius = UDim.new(0, 8)
-local copyNewStroke = Instance.new("UIStroke", copyNewBtn)
-copyNewStroke.Color = Color3.fromRGB(0, 180, 255); copyNewStroke.Transparency = 0.3; copyNewStroke.Thickness = 1.4
-copyNewBtn.MouseEnter:Connect(function() TweenService:Create(copyNewBtn, TweenInfo.new(0.15), {BackgroundTransparency = 0}):Play() end)
-copyNewBtn.MouseLeave:Connect(function() TweenService:Create(copyNewBtn, TweenInfo.new(0.15), {BackgroundTransparency = 0.2}):Play() end)
-
-copyNewBtn.MouseButton1Click:Connect(function()
-    local success, err = pcall(function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Shhd-code/Blsh/refs/heads/main/README.md"))()
-    end)
-    if not success then
-        -- silently fail, maybe add a tiny notification
-        print("Failed to load copy script: " .. tostring(err))
-    end
-end)
-
+----------------------------------------------------------------
 -- Floating mini circle (when hidden)
-
+----------------------------------------------------------------
 local miniGui = Instance.new("ScreenGui")
-miniGui.Name = "SHMini"; miniGui.ResetOnSpawn = false; miniGui.IgnoreGuiInset = true
+miniGui.Name = "MOHMini"; miniGui.ResetOnSpawn = false; miniGui.IgnoreGuiInset = true
 miniGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling; miniGui.DisplayOrder = 9001
 pcall(function() miniGui.Parent = guiParent end)
 if not miniGui.Parent then miniGui.Parent = PlayerGui end
@@ -567,17 +553,17 @@ local miniBubble = Instance.new("TextButton", miniGui)
 miniBubble.AnchorPoint = Vector2.new(0, 0.5)
 miniBubble.Position = UDim2.new(0, 16, 0.5, 0)
 miniBubble.Size = UDim2.new(0, 44, 0, 44)
-miniBubble.BackgroundColor3 = Color3.fromRGB(0, 110, 55)
+miniBubble.BackgroundColor3 = Color3.fromRGB(120, 90, 0)
 miniBubble.BackgroundTransparency = 0.15; miniBubble.BorderSizePixel = 0
 miniBubble.AutoButtonColor = false
-miniBubble.Text = "SH"
+miniBubble.Text = "MOH"
 miniBubble.Font = Enum.Font.GothamBlack
 miniBubble.TextSize = 14
 miniBubble.TextColor3 = Color3.fromRGB(230, 255, 240)
 miniBubble.Visible = false
 Instance.new("UICorner", miniBubble).CornerRadius = UDim.new(1, 0)
 local miniStroke = Instance.new("UIStroke", miniBubble)
-miniStroke.Color = Color3.fromRGB(0, 255, 130); miniStroke.Thickness = 1.6; miniStroke.Transparency = 0.2
+miniStroke.Color = Color3.fromRGB(255, 215, 0); miniStroke.Thickness = 1.6; miniStroke.Transparency = 0.2
 
 -- pulse
 task.spawn(function()
@@ -619,8 +605,9 @@ closeBtn.MouseButton1Click:Connect(function()
     task.wait(0.22); gui:Destroy(); miniGui:Destroy()
 end)
 
+----------------------------------------------------------------
 -- Drag main + mini
-
+----------------------------------------------------------------
 local function makeDraggable(handle, target)
     local dragging, dragStart, startPos
     handle.InputBegan:Connect(function(input)
@@ -641,8 +628,9 @@ end
 makeDraggable(title, main)
 makeDraggable(miniBubble, miniBubble)
 
--- Tab bar (only تحكم remains)
-
+----------------------------------------------------------------
+-- Tab bar
+----------------------------------------------------------------
 local tabBar = Instance.new("Frame", main)
 tabBar.BackgroundTransparency = 1
 tabBar.Position = UDim2.new(0, 16, 0, 56); tabBar.Size = UDim2.new(1, -32, 0, 36)
@@ -656,25 +644,25 @@ local function makeTab(name)
     btn.Size = UDim2.new(0, 130, 1, 0); btn.BackgroundColor3 = Color3.fromRGB(8, 30, 14)
     btn.BackgroundTransparency = 0.4; btn.BorderSizePixel = 0; btn.AutoButtonColor = false
     btn.Font = Enum.Font.GothamBold; btn.Text = name; btn.TextSize = 15
-    btn.TextColor3 = Color3.fromRGB(160, 230, 180)
+    btn.TextColor3 = Color3.fromRGB(230, 210, 130)
     Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 10)
-    local s = Instance.new("UIStroke", btn); s.Color = Color3.fromRGB(0, 200, 100); s.Transparency = 0.6
+    local s = Instance.new("UIStroke", btn); s.Color = Color3.fromRGB(210, 165, 0); s.Transparency = 0.6
 
     local page = Instance.new("Frame", main)
     page.Position = UDim2.new(0, 16, 0, 100); page.Size = UDim2.new(1, -32, 1, -116)
-    page.BackgroundColor3 = Color3.fromRGB(4, 12, 7); page.BackgroundTransparency = 0.4
+    page.BackgroundColor3 = Color3.fromRGB(16, 10, 0); page.BackgroundTransparency = 0.4
     page.BorderSizePixel = 0; page.Visible = false
     Instance.new("UICorner", page).CornerRadius = UDim.new(0, 10)
-    local ps = Instance.new("UIStroke", page); ps.Color = Color3.fromRGB(0, 180, 90); ps.Transparency = 0.7
+    local ps = Instance.new("UIStroke", page); ps.Color = Color3.fromRGB(185, 145, 0); ps.Transparency = 0.7
 
     pages[name] = page; tabButtons[name] = btn
     btn.MouseButton1Click:Connect(function()
         for n, p in pairs(pages) do p.Visible = (n == name) end
         for n, b in pairs(tabButtons) do
             if n == name then
-                TweenService:Create(b, TweenInfo.new(0.15), {BackgroundTransparency = 0.1, TextColor3 = Color3.fromRGB(0, 255, 130)}):Play()
+                TweenService:Create(b, TweenInfo.new(0.15), {BackgroundTransparency = 0.1, TextColor3 = Color3.fromRGB(255, 215, 0)}):Play()
             else
-                TweenService:Create(b, TweenInfo.new(0.15), {BackgroundTransparency = 0.4, TextColor3 = Color3.fromRGB(160, 230, 180)}):Play()
+                TweenService:Create(b, TweenInfo.new(0.15), {BackgroundTransparency = 0.4, TextColor3 = Color3.fromRGB(230, 210, 130)}):Play()
             end
         end
     end)
@@ -683,52 +671,25 @@ end
 
 local controlPage = makeTab("تحكم")
 
--- Page: تحكم (ALL original content preserved)
-
+----------------------------------------------------------------
+----------------------------------------------------------------
+-- Page: تحكم
+----------------------------------------------------------------
 local ctrlInfo = Instance.new("TextLabel", controlPage)
 ctrlInfo.BackgroundTransparency = 1
 ctrlInfo.Position = UDim2.new(0, 10, 0, 10); ctrlInfo.Size = UDim2.new(1, -20, 0, 24)
 ctrlInfo.Font = Enum.Font.GothamBold; ctrlInfo.Text = "لوحة التحكم"
-ctrlInfo.TextSize = 16; ctrlInfo.TextColor3 = Color3.fromRGB(0, 255, 130)
+ctrlInfo.TextSize = 16; ctrlInfo.TextColor3 = Color3.fromRGB(255, 215, 0)
 ctrlInfo.TextXAlignment = Enum.TextXAlignment.Left
 
-local ctrlStatus = Instance.new("TextLabel", controlPage)
-ctrlStatus.BackgroundTransparency = 1
-ctrlStatus.Position = UDim2.new(0, 10, 1, -28); ctrlStatus.Size = UDim2.new(1, -20, 0, 22)
-ctrlStatus.Font = Enum.Font.GothamSemibold; ctrlStatus.TextSize = 13
-ctrlStatus.TextColor3 = Color3.fromRGB(150, 220, 170); ctrlStatus.Text = ""
-ctrlStatus.TextXAlignment = Enum.TextXAlignment.Left
-
-local function makeBigBtn(parent, text, posY, color1, color2)
-    color1 = color1 or Color3.fromRGB(0, 150, 75)
-    color2 = color2 or Color3.fromRGB(0, 90, 45)
-    local b = Instance.new("TextButton", parent)
-    b.Position = UDim2.new(0, 10, 0, posY); b.Size = UDim2.new(1, -20, 0, 46)
-    b.BackgroundColor3 = Color3.fromRGB(0, 110, 55); b.BackgroundTransparency = 0.15
-    b.BorderSizePixel = 0; b.AutoButtonColor = false
-    b.Font = Enum.Font.GothamBlack; b.Text = text; b.TextSize = 16
-    b.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Instance.new("UICorner", b).CornerRadius = UDim.new(0, 10)
-    local s = Instance.new("UIStroke", b); s.Color = Color3.fromRGB(0, 255, 130); s.Transparency = 0.3
-    local g = Instance.new("UIGradient", b)
-    g.Color = ColorSequence.new{
-        ColorSequenceKeypoint.new(0, color1),
-        ColorSequenceKeypoint.new(1, color2),
-    }
-    g.Rotation = 90
-    b.MouseEnter:Connect(function() TweenService:Create(b, TweenInfo.new(0.15), {BackgroundTransparency = 0}):Play() end)
-    b.MouseLeave:Connect(function() TweenService:Create(b, TweenInfo.new(0.15), {BackgroundTransparency = 0.15}):Play() end)
-    return b
-end
-
--- scrollable area for control buttons
+-- scrollable area for control buttons (since we now have many)
 local ctrlScroll = Instance.new("ScrollingFrame", controlPage)
 ctrlScroll.Position = UDim2.new(0, 0, 0, 40)
 ctrlScroll.Size = UDim2.new(1, 0, 1, -70)
 ctrlScroll.BackgroundTransparency = 1
 ctrlScroll.BorderSizePixel = 0
 ctrlScroll.ScrollBarThickness = 4
-ctrlScroll.ScrollBarImageColor3 = Color3.fromRGB(0, 200, 100)
+ctrlScroll.ScrollBarImageColor3 = Color3.fromRGB(210, 165, 0)
 ctrlScroll.AutomaticCanvasSize = Enum.AutomaticSize.Y
 ctrlScroll.CanvasSize = UDim2.new(0, 0, 0, 0)
 
@@ -739,7 +700,7 @@ local skinsBtn     = makeBigBtn(ctrlScroll, "سكنات", 58,
 local dancesBtn    = makeBigBtn(ctrlScroll, "رقصات", 112,
     Color3.fromRGB(230, 140, 30), Color3.fromRGB(160, 90, 10))
 local loadBtn      = makeBigBtn(ctrlScroll, "تحكم الراديو", 166,
-    Color3.fromRGB(0, 200, 110), Color3.fromRGB(0, 130, 70))
+    Color3.fromRGB(210, 168, 0), Color3.fromRGB(140, 105, 0))
 local hideBtn      = makeBigBtn(ctrlScroll, "إخفاء رسائل السبام", 220,
     Color3.fromRGB(30, 200, 200), Color3.fromRGB(15, 130, 130))
 local spinStartBtn = makeBigBtn(ctrlScroll, "تشغيل الدوران", 274,
@@ -747,7 +708,7 @@ local spinStartBtn = makeBigBtn(ctrlScroll, "تشغيل الدوران", 274,
 local spinStopBtn  = makeBigBtn(ctrlScroll, "إيقاف الدوران", 328,
     Color3.fromRGB(170, 30, 30), Color3.fromRGB(110, 15, 15))
 local logsBtn      = makeBigBtn(ctrlScroll, "حماية من logs / clogs", 382,
-    Color3.fromRGB(0, 130, 220), Color3.fromRGB(0, 70, 140))
+    Color3.fromRGB(220, 170, 0), Color3.fromRGB(0, 70, 140))
 local titleBtn     = makeBigBtn(ctrlScroll, "تحكم في اللقب", 436,
     Color3.fromRGB(170, 70, 220), Color3.fromRGB(100, 30, 150))
 local allBtn       = makeBigBtn(ctrlScroll, "نسخ all", 490,
@@ -755,9 +716,16 @@ local allBtn       = makeBigBtn(ctrlScroll, "نسخ all", 490,
 local blueBtn      = makeBigBtn(ctrlScroll, "نسخه معدلة من سكربت بلو", 544,
     Color3.fromRGB(0, 120, 255), Color3.fromRGB(0, 60, 160))
 
+local ctrlStatus = Instance.new("TextLabel", controlPage)
+ctrlStatus.BackgroundTransparency = 1
+ctrlStatus.Position = UDim2.new(0, 10, 1, -28); ctrlStatus.Size = UDim2.new(1, -20, 0, 22)
+ctrlStatus.Font = Enum.Font.GothamSemibold; ctrlStatus.TextSize = 13
+ctrlStatus.TextColor3 = Color3.fromRGB(220, 195, 120); ctrlStatus.Text = ""
+ctrlStatus.TextXAlignment = Enum.TextXAlignment.Left
+
 local function showBigNotice(text)
     local nGui = Instance.new("ScreenGui")
-    nGui.Name = "SHNotice"; nGui.ResetOnSpawn = false; nGui.IgnoreGuiInset = true
+    nGui.Name = "MOHNotice"; nGui.ResetOnSpawn = false; nGui.IgnoreGuiInset = true
     nGui.DisplayOrder = 9998
     pcall(function() nGui.Parent = guiParent end)
     if not nGui.Parent then nGui.Parent = PlayerGui end
@@ -766,18 +734,18 @@ local function showBigNotice(text)
     nFrame.AnchorPoint = Vector2.new(0.5, 0.5)
     nFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
     nFrame.Size = UDim2.new(0, 520, 0, 220)
-    nFrame.BackgroundColor3 = Color3.fromRGB(8, 18, 10)
+    nFrame.BackgroundColor3 = Color3.fromRGB(22, 14, 0)
     nFrame.BackgroundTransparency = 0.1
     nFrame.BorderSizePixel = 0
     Instance.new("UICorner", nFrame).CornerRadius = UDim.new(0, 16)
     local nStroke = Instance.new("UIStroke", nFrame)
-    nStroke.Color = Color3.fromRGB(0, 255, 130); nStroke.Thickness = 2; nStroke.Transparency = 0.1
+    nStroke.Color = Color3.fromRGB(255, 215, 0); nStroke.Thickness = 2; nStroke.Transparency = 0.1
 
     local title = Instance.new("TextLabel", nFrame)
     title.BackgroundTransparency = 1
     title.Position = UDim2.new(0, 12, 0, 14); title.Size = UDim2.new(1, -24, 0, 32)
     title.Font = Enum.Font.GothamBlack; title.Text = "ملاحظة مهمة"
-    title.TextSize = 22; title.TextColor3 = Color3.fromRGB(0, 255, 130)
+    title.TextSize = 22; title.TextColor3 = Color3.fromRGB(255, 215, 0)
 
     local body = Instance.new("TextLabel", nFrame)
     body.BackgroundTransparency = 1
@@ -789,7 +757,7 @@ local function showBigNotice(text)
     local okBtn = Instance.new("TextButton", nFrame)
     okBtn.AnchorPoint = Vector2.new(0.5, 1)
     okBtn.Position = UDim2.new(0.5, 0, 1, -14); okBtn.Size = UDim2.new(0, 160, 0, 38)
-    okBtn.BackgroundColor3 = Color3.fromRGB(0, 200, 100); okBtn.BorderSizePixel = 0
+    okBtn.BackgroundColor3 = Color3.fromRGB(210, 165, 0); okBtn.BorderSizePixel = 0
     okBtn.Font = Enum.Font.GothamBold; okBtn.Text = "تمام"
     okBtn.TextSize = 18; okBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
     Instance.new("UICorner", okBtn).CornerRadius = UDim.new(0, 10)
@@ -798,7 +766,6 @@ local function showBigNotice(text)
     task.delay(12, function() pcall(function() nGui:Destroy() end) end)
 end
 
--- Dances button
 local dancesLoaded = false
 dancesBtn.MouseButton1Click:Connect(function()
     if dancesLoaded then ctrlStatus.Text = "الرقصات مفعلة بالفعل" return end
@@ -812,7 +779,6 @@ dancesBtn.MouseButton1Click:Connect(function()
     end)
 end)
 
--- Radio control button
 local controlLoaded = false
 loadBtn.MouseButton1Click:Connect(function()
     showBigNotice("البس الراديو يلا يشتغل السكربت 🙌😌")
@@ -827,7 +793,9 @@ loadBtn.MouseButton1Click:Connect(function()
     end)
 end)
 
+----------------------------------------------------------------
 -- Anti notification (activated by hide button)
+----------------------------------------------------------------
 local antiActive = false
 local antiConnection
 local function hideSystemNotifications(obj)
@@ -861,7 +829,9 @@ hideBtn.MouseButton1Click:Connect(function()
     print("تم تفعيل حماية الواجهة.. لن تظهر رسائل System بعد الآن.")
 end)
 
+----------------------------------------------------------------
 -- Spin (دوران)
+----------------------------------------------------------------
 local spinning = false
 local spinSpeed = 50
 local RunService = game:GetService("RunService")
@@ -884,7 +854,9 @@ spinStopBtn.MouseButton1Click:Connect(function()
     ctrlStatus.Text = "تم إيقاف الدوران"
 end)
 
+----------------------------------------------------------------
 -- Logs / clogs protection
+----------------------------------------------------------------
 local logsActive = false
 local function scanAndDestroy(obj)
     if obj:IsA("ScreenGui") or obj:IsA("Frame") then
@@ -920,11 +892,22 @@ logsBtn.MouseButton1Click:Connect(function()
     print("تم تفعيل الحظر النهائي لقائمة اللوقز")
 end)
 
+----------------------------------------------------------------
+-- Default tab
+----------------------------------------------------------------
+pages["تحكم"].Visible = true
+TweenService:Create(tabButtons["تحكم"], TweenInfo.new(0.15), {BackgroundTransparency = 0.1, TextColor3 = Color3.fromRGB(255, 215, 0)}):Play()
+
+
+
+
+----------------------------------------------------------------
 -- Title control (SH RGB embedded)
+----------------------------------------------------------------
 local titleLoaded = false
-local SH_RGB_SOURCE = [==[
+local MOH_RGB_SOURCE = [==[
 --[[
-    SH RGB - Roblox UI Script (Green Theme)
+    MOH RGB - Roblox UI Script (Golden Theme)
     Sends title text + cycling RGB Color3 to ApplyTitle RemoteEvent
 ]]
 
@@ -947,7 +930,7 @@ end
 local guiParent = getGuiParent()
 
 pcall(function()
-    for _, n in ipairs({"SHRGBHub","SHRGBMini","SHRGBSplash"}) do
+    for _, n in ipairs({"MOHRGBHub","MOHRGBMini","MOHRGBSplash"}) do
         local old = guiParent:FindFirstChild(n)
         if old then old:Destroy() end
         local old2 = PlayerGui:FindFirstChild(n)
@@ -955,11 +938,12 @@ pcall(function()
     end
 end)
 
+----------------------------------------------------------------
 -- Loading splash
-
+----------------------------------------------------------------
 local function runSplash()
     local splash = Instance.new("ScreenGui")
-    splash.Name = "SHRGBSplash"; splash.ResetOnSpawn = false; splash.IgnoreGuiInset = true
+    splash.Name = "MOHRGBSplash"; splash.ResetOnSpawn = false; splash.IgnoreGuiInset = true
     splash.DisplayOrder = 9999
     pcall(function() splash.Parent = guiParent end)
     if not splash.Parent then splash.Parent = PlayerGui end
@@ -968,23 +952,23 @@ local function runSplash()
     f.AnchorPoint = Vector2.new(0.5, 0.5)
     f.Position = UDim2.new(0.5, 0, 0.5, 0)
     f.Size = UDim2.new(0, 360, 0, 140)
-    f.BackgroundColor3 = Color3.fromRGB(8, 18, 10)
+    f.BackgroundColor3 = Color3.fromRGB(22, 14, 0)
     f.BackgroundTransparency = 0.15; f.BorderSizePixel = 0
     Instance.new("UICorner", f).CornerRadius = UDim.new(0, 14)
     local s = Instance.new("UIStroke", f)
-    s.Color = Color3.fromRGB(0, 255, 120); s.Thickness = 1.4; s.Transparency = 0.2
+    s.Color = Color3.fromRGB(255, 210, 0); s.Thickness = 1.4; s.Transparency = 0.2
 
     local n = Instance.new("TextLabel", f)
     n.BackgroundTransparency = 1
     n.Position = UDim2.new(0, 0, 0, 22); n.Size = UDim2.new(1, 0, 0, 44)
-    n.Font = Enum.Font.GothamBlack; n.Text = "SH RGB"
-    n.TextSize = 32; n.TextColor3 = Color3.fromRGB(0, 255, 130)
+    n.Font = Enum.Font.GothamBlack; n.Text = "MOH RGB"
+    n.TextSize = 32; n.TextColor3 = Color3.fromRGB(255, 215, 0)
 
     local st = Instance.new("TextLabel", f)
     st.BackgroundTransparency = 1
     st.Position = UDim2.new(0, 0, 0, 78); st.Size = UDim2.new(1, 0, 0, 28)
     st.Font = Enum.Font.GothamSemibold; st.Text = "جاري التشغيل..."
-    st.TextSize = 18; st.TextColor3 = Color3.fromRGB(180, 255, 200)
+    st.TextSize = 18; st.TextColor3 = Color3.fromRGB(255, 240, 160)
 
     for i = 1, 3 do
         if not splash.Parent then break end
@@ -1002,10 +986,11 @@ local function runSplash()
 end
 pcall(runSplash)
 
+----------------------------------------------------------------
 -- Main GUI
-
+----------------------------------------------------------------
 local gui = Instance.new("ScreenGui")
-gui.Name = "SHRGBHub"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true
+gui.Name = "MOHRGBHub"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true
 gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling; gui.DisplayOrder = 9000
 pcall(function() gui.Parent = guiParent end)
 if not gui.Parent then gui.Parent = PlayerGui end
@@ -1013,21 +998,21 @@ if not gui.Parent then gui.Parent = PlayerGui end
 local main = Instance.new("Frame", gui)
 main.Name = "Main"; main.AnchorPoint = Vector2.new(0.5, 0.5)
 main.Position = UDim2.new(0.5, 0, 0.5, 0); main.Size = UDim2.new(0, 420, 0, 320)
-main.BackgroundColor3 = Color3.fromRGB(6, 16, 9); main.BackgroundTransparency = 0.25
+main.BackgroundColor3 = Color3.fromRGB(18, 12, 0); main.BackgroundTransparency = 0.25
 main.BorderSizePixel = 0
 Instance.new("UICorner", main).CornerRadius = UDim.new(0, 14)
 local mStroke = Instance.new("UIStroke", main)
-mStroke.Color = Color3.fromRGB(0, 230, 110); mStroke.Thickness = 1.4; mStroke.Transparency = 0.25
+mStroke.Color = Color3.fromRGB(230, 190, 0); mStroke.Thickness = 1.4; mStroke.Transparency = 0.25
 
 local mGradient = Instance.new("UIGradient", main)
 mGradient.Color = ColorSequence.new{
-    ColorSequenceKeypoint.new(0, Color3.fromRGB(10, 30, 16)),
-    ColorSequenceKeypoint.new(1, Color3.fromRGB(4, 12, 7)),
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(32, 20, 0)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(16, 10, 0)),
 }
 mGradient.Rotation = 135
 
 local glow = Instance.new("Frame", main)
-glow.BackgroundColor3 = Color3.fromRGB(0, 255, 130); glow.BorderSizePixel = 0
+glow.BackgroundColor3 = Color3.fromRGB(255, 215, 0); glow.BorderSizePixel = 0
 glow.Size = UDim2.new(1, 0, 0, 2); glow.Position = UDim2.new(0, 0, 0, 44)
 
 -- Header
@@ -1038,8 +1023,8 @@ header.Size = UDim2.new(1, 0, 0, 44)
 local title = Instance.new("TextLabel", header)
 title.BackgroundTransparency = 1
 title.Position = UDim2.new(0, 14, 0, 0); title.Size = UDim2.new(1, -60, 1, 0)
-title.Font = Enum.Font.GothamBlack; title.Text = "⬛ SH RGB ⬛"
-title.TextSize = 20; title.TextColor3 = Color3.fromRGB(0, 255, 130)
+title.Font = Enum.Font.GothamBlack; title.Text = "⬛ MOH RGB ⬛"
+title.TextSize = 20; title.TextColor3 = Color3.fromRGB(255, 215, 0)
 title.TextXAlignment = Enum.TextXAlignment.Left
 
 local closeBtn = Instance.new("TextButton", header)
@@ -1069,8 +1054,9 @@ do
     end)
 end
 
+----------------------------------------------------------------
 -- Body with slots
-
+----------------------------------------------------------------
 local body = Instance.new("Frame", main)
 body.Position = UDim2.new(0, 12, 0, 56); body.Size = UDim2.new(1, -24, 1, -68)
 body.BackgroundTransparency = 1
@@ -1089,33 +1075,33 @@ local function makeSlot(index, defaultText)
 
     local box = Instance.new("TextBox", row)
     box.Size = UDim2.new(1, -100, 1, 0); box.Position = UDim2.new(0, 0, 0, 0)
-    box.BackgroundColor3 = Color3.fromRGB(10, 22, 14); box.BackgroundTransparency = 0.15
+    box.BackgroundColor3 = Color3.fromRGB(26, 17, 0); box.BackgroundTransparency = 0.15
     box.BorderSizePixel = 0
     box.Text = defaultText; box.PlaceholderText = "اكتب النص..."
-    box.TextColor3 = Color3.fromRGB(220, 255, 230); box.PlaceholderColor3 = Color3.fromRGB(120, 160, 130)
+    box.TextColor3 = Color3.fromRGB(220, 255, 230); box.PlaceholderColor3 = Color3.fromRGB(180, 155, 80)
     box.Font = Enum.Font.GothamSemibold; box.TextSize = 14
     box.ClearTextOnFocus = false
     Instance.new("UICorner", box).CornerRadius = UDim.new(0, 8)
     local bs = Instance.new("UIStroke", box)
-    bs.Color = Color3.fromRGB(0, 200, 100); bs.Thickness = 1; bs.Transparency = 0.5
+    bs.Color = Color3.fromRGB(210, 165, 0); bs.Thickness = 1; bs.Transparency = 0.5
 
     local btn = Instance.new("TextButton", row)
     btn.AnchorPoint = Vector2.new(1, 0)
     btn.Position = UDim2.new(1, 0, 0, 0); btn.Size = UDim2.new(0, 92, 1, 0)
-    btn.BackgroundColor3 = Color3.fromRGB(0, 170, 80); btn.BorderSizePixel = 0
+    btn.BackgroundColor3 = Color3.fromRGB(180, 140, 0); btn.BorderSizePixel = 0
     btn.Font = Enum.Font.GothamBold; btn.Text = "تشغيل"
     btn.TextSize = 14; btn.TextColor3 = Color3.fromRGB(0, 0, 0)
     btn.AutoButtonColor = false
     Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 8)
     local bts = Instance.new("UIStroke", btn)
-    bts.Color = Color3.fromRGB(0, 255, 130); bts.Thickness = 1; bts.Transparency = 0.3
+    bts.Color = Color3.fromRGB(255, 215, 0); bts.Thickness = 1; bts.Transparency = 0.3
 
     btn.MouseButton1Click:Connect(function()
         if activeLoops[index] then
             activeLoops[index] = false
             btn.Text = "تشغيل"
-            btn.BackgroundColor3 = Color3.fromRGB(0, 170, 80)
-            bts.Color = Color3.fromRGB(0, 255, 130)
+            btn.BackgroundColor3 = Color3.fromRGB(180, 140, 0)
+            bts.Color = Color3.fromRGB(255, 215, 0)
         else
             if not Remote then
                 Remote = ReplicatedStorage:FindFirstChild("ApplyTitle")
@@ -1142,10 +1128,11 @@ makeSlot(1, "SH ON TOP")
 makeSlot(2, "HAHAHAHA")
 makeSlot(3, "SHAHAD WAS HERE")
 
+----------------------------------------------------------------
 -- Mini draggable bubble
-
+----------------------------------------------------------------
 local miniGui = Instance.new("ScreenGui")
-miniGui.Name = "SHRGBMini"; miniGui.ResetOnSpawn = false; miniGui.IgnoreGuiInset = true
+miniGui.Name = "MOHRGBMini"; miniGui.ResetOnSpawn = false; miniGui.IgnoreGuiInset = true
 miniGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling; miniGui.DisplayOrder = 9001
 pcall(function() miniGui.Parent = guiParent end)
 if not miniGui.Parent then miniGui.Parent = PlayerGui end
@@ -1218,73 +1205,66 @@ closeBtn.MouseButton1Click:Connect(function()
     pcall(function() miniGui:Destroy() end)
 end)
 
-print("[SH RGB] Loaded")
+print("[MOH RGB] Loaded")
 
 ]==]
 
 titleBtn.MouseButton1Click:Connect(function()
-    if titleLoaded then
-        ctrlStatus.Text = "تحكم اللقب مفعل بالفعل"
-        return
-    end
-    titleLoaded = true
+    if titleLoaded then ctrlStatus.Text = "تحكم اللقب مفعل بالفعل" return end
     ctrlStatus.Text = "جاري تشغيل تحكم اللقب..."
     task.spawn(function()
-        local ok, err = pcall(function()
-            loadstring(SH_RGB_SOURCE)()
-        end)
-        if ok then
-            ctrlStatus.Text = "تم تشغيل تحكم اللقب"
-        else
-            titleLoaded = false
-            ctrlStatus.Text = "فشل: " .. tostring(err):sub(1, 60)
-        end
+        local fn, err = loadstring(MOH_RGB_SOURCE)
+        if not fn then ctrlStatus.Text = "فشل: " .. tostring(err):sub(1,60); return end
+        local ok, runErr = pcall(fn)
+        if ok then titleLoaded = true; ctrlStatus.Text = "تم تشغيل تحكم اللقب"
+        else ctrlStatus.Text = "خطأ: " .. tostring(runErr):sub(1,60) end
     end)
 end)
 
--- All copy button
-allBtn.MouseButton1Click:Connect(function()
-    local all = ""
-    for _, p in ipairs(Players:GetPlayers()) do
-        all = all .. p.Name .. " "
-    end
-    all = all:sub(1, -2)
-    local ok = false
-    if setclipboard then ok = pcall(setclipboard, all)
-    elseif toclipboard then ok = pcall(toclipboard, all)
-    elseif type(syn) == "table" and syn.write_clipboard then ok = pcall(syn.write_clipboard, all) end
-    if ok then
-        ctrlStatus.Text = "تم نسخ الأسماء: " .. all
-    else
-        ctrlStatus.Text = "فشل النسخ"
-    end
+spamBtn.MouseButton1Click:Connect(function()
+    ctrlStatus.Text = "جاري تشغيل السبام..."
+    task.spawn(function()
+        local ok, err = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Shhd-code/SH_spam_neo/refs/heads/main/README.md"))()
+        end)
+        if ok then ctrlStatus.Text = "تم تشغيل السبام"
+        else ctrlStatus.Text = "فشل: " .. tostring(err):sub(1, 60) end
+    end)
 end)
 
--- Blue script button
+skinsBtn.MouseButton1Click:Connect(function()
+    ctrlStatus.Text = "جاري تشغيل السكنات..."
+    task.spawn(function()
+        local ok, err = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Shhd-code/Skinn-neooo/refs/heads/main/README.md"))()
+        end)
+        if ok then ctrlStatus.Text = "تم تشغيل السكنات"
+        else ctrlStatus.Text = "فشل: " .. tostring(err):sub(1, 60) end
+    end)
+end)
+
+allBtn.MouseButton1Click:Connect(function()
+    ctrlStatus.Text = "جاري تشغيل نسخ all..."
+    task.spawn(function()
+        local ok, err = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Shhd-code/All/refs/heads/main/README.md"))()
+        end)
+        if ok then ctrlStatus.Text = "تم تشغيل نسخ all"
+        else ctrlStatus.Text = "فشل: " .. tostring(err):sub(1, 60) end
+    end)
+end)
+
+local blueLoaded = false
 blueBtn.MouseButton1Click:Connect(function()
-    ctrlStatus.Text = "جاري تشغيل سكربت بلو..."
+    if blueLoaded then ctrlStatus.Text = "نسخه معدلة من سكربت بلو مفعلة بالفعل" return end
+    ctrlStatus.Text = "جاري تشغيل نسخه معدلة من سكربت بلو..."
     task.spawn(function()
         local ok, err = pcall(function()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/Shhd-code/Blsh/refs/heads/main/README.md"))()
         end)
-        if ok then
-            ctrlStatus.Text = "تم تشغيل نسخة بلو"
-        else
-            ctrlStatus.Text = "فشل: " .. tostring(err):sub(1, 60)
-        end
+        if ok then blueLoaded = true; ctrlStatus.Text = "تم تشغيل نسخه معدلة من سكربت بلو"
+        else ctrlStatus.Text = "فشل: " .. tostring(err):sub(1, 60) end
     end)
 end)
 
--- Skins button (placeholder)
-skinsBtn.MouseButton1Click:Connect(function()
-    ctrlStatus.Text = "زر السكنات - لم يتم ربطه بعد"
-end)
-
--- Spam button (placeholder)
-spamBtn.MouseButton1Click:Connect(function()
-    ctrlStatus.Text = "زر السبام - لم يتم ربطه بعد"
-end)
-
--- Default tab
-pages["تحكم"].Visible = true
-TweenService:Create(tabButtons["تحكم"], TweenInfo.new(0.15), {BackgroundTransparency = 0.1, TextColor3 = Color3.fromRGB(0, 255, 130)}):Play()
+print("[MOH] Loaded")
